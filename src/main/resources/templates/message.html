@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<style>
+    .alert{
+    color: red;
+    }
+      .result{
+    color: blue;
+    }
+
+      .layout{
+        width : 500px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+
+    .layout input{
+        width : 90%;
+        box-sizing : border-box;
+    }
+
+    .layout textarea{
+        width : 100%;
+        margin-top : 10px;
+        min-height : 400px;
+    }
+
+        .layout2{
+        width : 500px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+
+    .layout2 input{
+      width : 30%;
+      box-sizing : border-box;
+    }
+
+</style>
+
+<head>  <th:block th:if="${#strings.length(data.message) != 0}">
+  <script>
+			top.alert("[[${data.message}]]");
+		</script>
+</th:block>
+  <th:block th:if="${#strings.length(data.href) != 0}">
+      <script>
+			top.location.href = '[[${data.href}]]';
+		</script>
+  </th:block>
+
+</head>
+
+</html>

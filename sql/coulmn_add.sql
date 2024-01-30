@@ -1,0 +1,1 @@
+alter table filelist add year varchar(63)
