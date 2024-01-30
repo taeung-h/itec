@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<style>
+    .alert{
+    color: red;
+    }
+
+      .layout{
+        width : 500px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+
+    .layout input{
+        width : 90%;
+        box-sizing : border-box;
+    }
+
+    .layout textarea{
+        width : 100%;
+        margin-top : 10px;
+        min-height : 400px;
+    }
+
+        .layout2{
+        width : 500px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+
+    .layout2 input{
+      width : 30%;
+      box-sizing : border-box;
+    }
+
+       body {
+    font-size:20pt
+}
+
+</style>
+
+<div class="layout">
+  <div>
+    <h1>관리자 로그인</h1>
+    <!-- homecontroller.login 함수-->
+    <form name="admin" action="/members/adminlogin" method="post">
+      <div class="layout2">
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name"
+               style="width:250px; height:40px;font-size:20px;" placeholder="이름을 입력하세요" required>
+        <label class="alert" th:text="${namealert}"></label>
+        <div></div>
+        <label for="password">비밀번호</label>
+        <input type="password" id="password" name="password"
+               style=" width:250px; height:40px;font-size:20px;" placeholder="비밀번호를 입력하세요" required>
+        <label class="alert" th:text="${phonenumalert}"></label>
+      </div>
+      <button type="submit" style="height:40px;font-size:25px;">로그인</button>
+    </form>
+    <a href="/"><button style="height:40px;font-size:25px;">뒤로가기</button></a>
+    </p>
+  </div>
+</div> <!-- /container -->
+</body>
+</html>

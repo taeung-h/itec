@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>게시물 리스트 페이지</title>
+  <h5 th:text=="${adminNow.name}+님"></h5>
+</head>
+
+<style>
+      .layout{
+        width : 500px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+
+    .layout input{
+        width : 90%;
+        box-sizing : border-box;
+    }
+
+    .layout textarea{
+        width : 100%;
+        margin-top : 10px;
+        min-height : 400px;
+    }
+       body {
+    font-size:20pt
+    }
+
+    th, td{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+    }
+</style>
+<body>
+<div class="layout">
+  <table>
+    <thead>
+    <tr>
+      <th>교육년도</th>
+      <th>교육 월</th>
+      <th>교육명</th>
+    </thead>
+    <tbody>
+    <tr th:each="edu : ${list}" >
+      <td th:text="${edu.year}+년"></td>
+      <td th:text="${edu.month}+월"></td>
+      <td>
+        <a th:text="${edu.title}" th:href="@{/education/adminmonthedulist(id=${edu.id},name=${adminNow.name})}"></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+    <a th:if="${page != nowPage}" th:href="@{/educations(page=${page-1}, name=${adminNow.name})}" th:text="${page}"></a>
+    <strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
+  </th:block>
+
+  <a th:href="@{/members/cancel(name=${adminNow.name})}"
+     style="height:40px;font-size:25px;"><button>뒤로가기</button></a>
+</div>
+
+</body>
+</html>

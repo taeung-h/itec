@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<style>
+     body {
+    font-size:20pt
+}
+
+      .tablenew{
+      }
+      .trtd_new_value{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+      width:200px;
+    }
+    .trtd_new_name{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+      width:100;
+    }
+      th, td{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+    }
+          .rightText{
+      }
+
+      text-align: right;
+
+    }
+</style>
+
+<body>
+
+<div class="container">
+  <div>
+    <h1>출장지관련 데이터 편집창</h1>
+    <p th:text="안녕하세요"></p>
+
+
+    <p>데이터</p>
+
+    <table class="tablenew">
+      <thead class="tablenew">
+      <tr class="tablenew">
+        <th class="trtd_new_name">회사</th>
+        <th class="trtd_new_name">출장지명</th>
+        <th class="trtd_new_value">거리</th>
+      </tr>
+      </thead>
+      <tbody class="tablenew">
+      <tr class="tablenew" th:each="data : ${list}" >
+        <td class="trtd_new_value" th:text="${data.company}"></td>
+        <td class="trtd_new_value" th:text="${data.name}"></td>
+          <td class="trtd_new_value"th:text="${data.distance}"></td>
+          <td class="trtd_new_value"> <a th:href="@{/location/modify(locationid=${data.id})}">수정</a> </td>
+        </tr>
+      </tbody>
+  </table>
+
+    <a href="/location/cancel"><button
+            style="height:40px;font-size:25px;">뒤로가기</button></a>
+
+
+
+
+
+
+  </div>
+</div> <!-- /container -->
+</body>
+</html>

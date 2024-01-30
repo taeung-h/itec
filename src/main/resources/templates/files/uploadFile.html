@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+
+<!-- <body style="text-align: center"> -->
+파일 업로드 및 관리 페이지 입니다.
+
+<style>
+    .alert{
+    color: red;
+    }
+
+    .layout{
+        width : 500px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+
+    .layout input{
+        width : 90%;
+        box-sizing : border-box;
+    }
+
+    .layout textarea{
+        width : 100%;
+        margin-top : 10px;
+        min-height : 400px;
+    }
+
+    .layout2{
+        width : 500px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+
+    .layout2 input{
+      width : 30%;
+      box-sizing : border-box;
+    }
+       body {
+    font-size:20pt
+}
+
+
+</style>
+
+<body>
+
+
+  <div class="layout">
+<!--    <form id="education" th:object="${education}" action="/files/new" method="post" enctype="multipart/form-data">-->
+    <form id="education" th:object="${education}" th:action="@{/files/new(name=${adminNow.name})}" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <div class="layout2">
+          <label for="year">교육년도</label>
+          <input type="text" id="year" name="year"
+                 style="height:40px;font-size:20px;" placeholder="교육 년도를 입력하세요" required>
+          <label for="month">교육월</label>
+          <input type="text" id="month" name="month"
+                 style="height:40px;font-size:20px;" placeholder="교육 월을 입력하세요" required>
+        </div>
+        <div>
+          <label for="title">제목</label>
+          <input type="text" id="title" name ="title"
+                 style="height:40px;font-size:20px;" placeholder="제목을 입력하세요" required>
+          <label class="alert" th:text="${jointitlealert}"></label>
+          <textarea name="content" id="content" style="height:40px;font-size:20px;"></textarea>
+        </div>
+        <div>
+          <label for="filename">본문파일선택</label>
+          <input type="file" id="filename" name="filename"
+                 style="height:40px;font-size:20px;" multiple="multiple" accept="image/*">
+          <label class="alert" th:text="${joinfilealert}"></label>
+        </div>
+        <div>
+          <label for="downfile">첨부파일</label>
+          <input type="file" id="downfile" name="downfile"
+                 style="height:40px;font-size:20px;" multiple="multiple" accept="image/*">
+          <label class="alert" th:text="${joinfilealert2}"></label>
+        </div>
+      </div>
+      <button type="submit"
+              style="height:40px;font-size:25px;">등록</button>
+    </form>
+    <a th:href="@{/members/cancel(name=${adminNow.name})}"><button
+            style="height:40px;font-size:25px;">등록취소</button></a>
+<!--    <a href="/members/cancel"><button-->
+<!--            style="height:40px;font-size:25px;">등록취소</button></a>-->
+  </div>
+</body>
+</html>

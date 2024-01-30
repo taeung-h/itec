@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foundation | Welcome</title>
+  <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+</head>
+<style>
+  .alert{
+color: red;
+}
+</style>
+
+<body>
+
+<!-- Start Top Bar -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li class="menu-text">아이테크놀로지(주) 전자교육전파 홈페이지</li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li th:text=" ${member.name}+님">
+      </li>
+      <a href="/"style="float: right;" class="button small hollow" >로그아웃</a>
+    </ul>
+  </div>
+</div>
+<!-- End Top Bar -->
+
+<div class="callout large primary">
+  <div class="row column text-center">
+    <h1 th:text="${education.title}"></h1>
+    <h2 class="subheader" th:text="${education.year}+년+${education.month}+월"></h2>
+    <h1 class="alert" th:text="${alert}"></h1>
+  </div>
+</div>
+
+<!-- We can now combine rows and columns when there's only one column in that row -->
+<div class="row medium-8 large-7 columns">
+  <div class="blog-post">
+    <h3>교육내용</h3>
+    <pre th:text="${education.content}"></pre>
+    <div class="callout">
+      <ul class="menu simple">
+        <tr th:each="file : ${filelist}" >
+          <img th:src="@{${file.filepath}}" th:if="${file.filepath != null}" width="500"/>
+        </tr>
+      </ul>
+    </div>
+    <div class="callout">
+      <ul class="menu simple">
+        <h5>첨부파일목록
+        </h5>
+      </ul>
+      <table>
+        <thead>
+        <tr>
+          <th>첨부파일명</th>
+        </thead>
+        <tbody>
+        <tr th:each="file2 : ${downfilelist}" >
+          <td th:text="${file2.filename}"></td>
+          <td>
+            <a href="#" th:href="@{/files/download(id=${file2.id})}">[download]</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <a th:href = "@{/complete/sign(eduid=${education.id},id=${member.id}, name=${member.name}
+  ,phonenum = ${member.phonenum})}"> <button
+            style="height:40px;font-size:25px;">교육완료</button></a>
+    <a th:href = "@{/education/list(id=${member.id}, name=${member.name}
+  ,phonenum = ${member.phonenum})}"> <button
+            style="height:40px;font-size:25px;margin-left:50px">취소</button></a>
+  </div>
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+<!--<head>-->
+<!--  <title>게시물 리스트 페이지</title>-->
+<!--</head>-->
+
+<!--<style>-->
+<!--.alert{
+color: red;
+}-->
+<!--      .layout{-->
+<!--      width : 500px;-->
+<!--        margin : 0 auto;-->
+<!--        margin-top : 40px;-->
+<!--    }-->
+
+<!--    .layout input{-->
+<!--        width : 90%;-->
+<!--        box-sizing : border-box;-->
+<!--    }-->
+
+<!--    .layout textarea{-->
+<!--        width : 100%;-->
+<!--        margin-top : 10px;-->
+<!--        min-height : 400px;-->
+<!--    }-->
+<!--       body {-->
+<!--    font-size:20pt-->
+<!--    }-->
+
+
+<!--</style>-->
+<!--<body>-->
+<!--<div class="layout">-->
+
+<!--  <h1 class="alert" th:text="${alert}"></h1>-->
+<!--  <h1 th:text="${education.title}"></h1>-->
+<!--  <h2 th:text="${education.year}+년+${education.month}+월" ></h2>-->
+<!--  <pre th:text="${education.content}"></pre>-->
+
+<!--  <tr th:each="file : ${filelist}" >-->
+<!--    <img th:src="@{${file.filepath}}" th:if="${file.filepath != null}" width="500"/>-->
+<!--  </tr>-->
+
+  <!-- Completecontroller.educationsign함수-->
+<!--  <a th:href = "@{/complete/sign(eduid=${education.id},id=${member.id}, name=${member.name}-->
+<!--  ,phonenum = ${member.phonenum})}"> <button-->
+<!--          style="height:40px;font-size:25px;">교육완료</button></a>-->
+<!--  <a th:href = "@{/education/list(id=${member.id}, name=${member.name}-->
+<!--  ,phonenum = ${member.phonenum})}"> <button-->
+<!--          style="height:40px;font-size:25px;">취소</button></a>-->
+
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->

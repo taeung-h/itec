@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>게시물 리스트 페이지</title>
+</head>
+<style>
+     body {
+    font-size:20pt
+}
+</style>
+
+<body>
+
+<div class="container">
+  <div>
+    <h1>관리자 계정 로그인</h1>
+    <h5 th:text=="${adminNow.name}+님"></h5>
+    <a href="/"><button style="height:40px;font-size:25px;">로그아웃</button></a>
+    <p>회원 관리</p>
+    <p>
+
+      <a th:href="@{/members/new(name=${adminNow.name})}"><button style="height:40px;font-size:25px;">회원 가입</button></a>
+      <a th:href="@{/members(name=${adminNow.name})}"><button style="height:40px;font-size:25px;">회원 목록</button></a>
+    </p>
+
+    <p>교육 관리</p>
+    <p>
+      <div>
+    <a th:href="@{/file/new(name=${adminNow.name})}"><button style="height:40px;font-size:25px;">교육 업로드</button></a>
+    <a th:href="@{/educations(name=${adminNow.name})}"><button style="height:40px;font-size:25px;">교육리스트</button></a>
+  </div>
+    <div>
+      <a th:href="@{/files(name=${adminNow.name})}"><button style="height:40px;font-size:25px;">전체 파일리스트</button></a>
+      <a th:href="@{/ongoingedu(name=${adminNow.name})}"><button style="height:40px;font-size:25px;">교육관리</button></a>
+    </div>
+    <a th:href="@{/complete/signpaperlist(name=${adminNow.name})}"><button
+            style="height:40px;font-size:25px;">교육결과출력</button></a>
+    </p>
+
+<!--    <p>출장 관리</p>-->
+<!--    <P>-->
+<!--      <a href="/oils/new"><button style="height:40px;font-size:25px;">새 유류 등록</button></a>-->
+<!--      <a href="/oils/list"><button style="height:40px;font-size:25px;">전체 유류</button></a>-->
+<!--      <a href="/location/new"><button style="height:40px;font-size:25px;">출장지 등록</button></a>-->
+<!--      <a href="/location/list"><button style="height:40px;font-size:25px;">전체 출장지</button></a>-->
+<!--    </P>-->
+
+
+
+
+
+
+  </div>
+</div> <!-- /container -->
+</body>
+</html>

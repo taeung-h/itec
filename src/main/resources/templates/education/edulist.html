@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foundation | Welcome</title>
+  <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+</head>
+
+<style>
+
+      .tablenew{
+      }
+      .trtd_new_date{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+      width:90px;
+    }
+    .trtd_new_name{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+      width:300px;
+    }
+      th, td{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+    }
+          .rightText{
+      }
+
+      text-align: right;
+
+    }
+
+</style>
+
+
+<body>
+
+<div class="off-canvas-wrapper">
+  <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+    <div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left">
+      <div class="row column">
+        <br>
+        <h5 th:text ="${member.name}+님"></h5>
+
+
+
+      </div>
+    </div>
+
+    <div class="off-canvas-content" data-off-canvas-content>
+      <div class="title-bar hide-for-large">
+      </div>
+      <div class="callout primary">
+            <div class="row column">
+              <h1>교육 리스트
+                <a href="/"style="float: right;" class="button small hollow" >로그아웃</a>
+              </h1>
+
+              <p class="lead">관리자가 오픈한 교육만 보입니다. 교육이 보이지 않을 시 관리자에게 문의 바랍니다.
+                교육 선택 후 내용 숙지 후 교육완료 버튼을 눌러주시기 바랍니다.
+                교육 완료 시 자동 서명되어 공식문서로 활용됩니다. 반드시 내용 숙지 후 완료 바랍니다.
+              </p>
+            </div>
+          </div>
+          <div>
+
+              <table class="tablenew">
+                <thead class="tablenew">
+                <tr class="tablenew">
+                  <th class="trtd_new_date">교육년도</th>
+                  <th class="trtd_new_date">교육 월</th>
+                  <th class="trtd_new_name">교육명</th>
+                </thead>
+                <tbody class="tablenew">
+                <tr class="tablenew" th:each="edu : ${list}" >
+                  <td class="trtd_new_date" th:text="${edu.year}+년"></td>
+                  <td class="trtd_new_date" th:text="${edu.month}+월"></td>
+                  <td class="trtd_new_name">
+                    <a  th:text="${edu.title}" th:href="@{/education/monthedulist(eduid=${edu.id}, id=${member.id},
+                 name = ${member.name}, phonenum = ${member.phonenum})}"></a>
+                    <label class="result" th:text="${result}"></label>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+          </div>
+
+          <hr>
+        </div>
+      </div>
+    </div>
+
+    </body>
+    </html>
+
+
+
+
+    <!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>게시물 리스트 페이지</title>-->
+<!--</head>-->
+
+<!--<style>-->
+<!--    .result{-->
+<!--    color: blue;-->
+<!--    }-->
+<!--        .alert{-->
+<!--    color: red;-->
+<!--    }-->
+<!--      .layout{-->
+<!--        width : 500px;-->
+<!--        margin : 0 auto;-->
+<!--        margin-top : 40px;-->
+<!--    }-->
+
+<!--    .layout input{-->
+<!--        width : 90%;-->
+<!--        box-sizing : border-box;-->
+<!--    }-->
+
+<!--    .layout textarea{-->
+<!--        width : 100%;-->
+<!--        margin-top : 10px;-->
+<!--        min-height : 400px;-->
+<!--    }-->
+<!--          .layout4{-->
+<!--        margin-left : 40px;-->
+<!--    }-->
+
+<!--       body {-->
+<!--    font-size:20pt-->
+<!--    }-->
+
+<!--    th, td{-->
+<!--      margin : 10px;-->
+<!--      padding : 10px 10px;-->
+<!--      text-align: center;-->
+<!--    }-->
+
+<!--</style>-->
+<!--<body>-->
+
+<!--  <div class="layout">-->
+
+<!--    <h1 th:text ="${member.name}+님"></h1>-->
+
+<!--    <table>-->
+<!--      <thead>-->
+<!--      <tr>-->
+<!--        <th>교육년도</th>-->
+<!--        <th >교육 월</th>-->
+<!--        <th>교육명</th>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr th:each="edu : ${list}" >-->
+<!--        <td th:text="${edu.year}+년"></td>-->
+<!--        <td th:text="${edu.month}+월"></td>-->
+<!--        <td>-->
+<!--          &lt;!&ndash; educontroller.monthedu 함수&ndash;&gt;-->
+<!--          <a th:text="${edu.title}" th:href="@{/education/monthedulist(eduid=${edu.id}, id=${member.id},-->
+<!--           name = ${member.name}, phonenum = ${member.phonenum})}"></a>-->
+<!--          <label class="result" th:text="${result}"></label>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--    <a th:href = "@{/home/login(id=${member.id}, name=${member.name}-->
+<!--  ,phonenum = ${member.phonenum})}"-->
+<!--       style="height:40px;font-size:25px;"> <button-->
+<!--            style="height:40px;font-size:25px;">뒤로가기</button></a>-->
+<!--  </div>-->
+
+
+
+<!--</body>-->
+<!--</html>-->

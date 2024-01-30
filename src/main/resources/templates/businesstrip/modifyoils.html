@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+
+<!-- <body style="text-align: center"> -->
+유류를 등록하는 페이지 입니다.
+
+<style>
+    .alert{
+    color: red;
+    }
+
+    .layout{
+        width : 1000px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+
+    .layout input{
+        width : 90%;
+        box-sizing : border-box;
+    }
+
+    .layout textarea{
+        width : 100%;
+        margin-top : 10px;
+        min-height : 400px;
+    }
+
+    .layout2{
+        width : 800px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+
+    .layout2 input{
+      width : 30%;
+      box-sizing : border-box;
+    }
+       body {
+    font-size:20pt
+}
+
+
+</style>
+
+<body>
+
+
+<div class="layout">
+    <form id="oils" th:action="@{/oils/modify(id=${oil.id})}" object="oils" method="post">
+        <div class="form-group">
+            <div class="layout2">
+                <div>
+                    <label for="name">오일명 ex) 경유, 전기, 하이브</label>
+                    <input type="text" id="name" name="name"
+                           style="height:40px;font-size:20px;" th:value = "${oil.name}" placeholder="유류명을 입력하세요" required>
+                    <label class="alert" th:text="${joinalert}"></label>
+                </div>
+
+                <div>
+                    <label for="perliter">연비(km/l) ex) 11.5 -> 11.5) </label>
+                    <input type="text" id="perliter" name="perliter"
+                           style="height:40px;font-size:20px;" th:value = "${oil.perliter}" placeholder="연비를 입력하세요" required>
+                </div>
+
+                <div>
+                    <label for="price">단가(원) ex) 1,600원 -> 1600</label>
+                    <input type="text" id="price" name="price"
+                           style="height:40px;font-size:20px;" th:value = "${oil.price}" placeholder="개인단가를 입력하세요" required>
+                </div>
+                <div>
+                    <label for="repaircost">개인차량보수비(원) ex) 130원 -> 130</label>
+                    <input type="text" id="repaircost" name="repaircost"
+                           style="height:40px;font-size:20px;" th:value = "${oil.repaircost}" placeholder="보수비용을 입력하세요" required>
+                </div>
+
+            </div>
+        </div>
+        <button type="submit"
+                style="height:40px;font-size:25px;">등록</button>
+    </form>
+    <a href="/oils/cancel"><button
+            style="height:40px;font-size:25px;">등록취소</button></a>
+</div>
+</body>
+</html>

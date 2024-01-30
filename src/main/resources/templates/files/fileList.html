@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>파일 리스트 페이지</title>
+</head>
+<style>
+     body {
+    font-size:20pt
+}
+
+    th, td{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+    }
+</style>
+
+<body>
+<a th:href="@{/members/cancel(name=${adminNow.name})}"
+   style="height:40px;font-size:25px;">뒤로가기</a>
+
+<div class="container">
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>파일명</th>
+        <th>교육ID</th>
+        <th>파일 경로</th>
+      </thead>
+      <tbody>
+      <tr th:each="file : ${files}">
+        <td th:text="${file.id}"></td>
+        <td th:text="${file.filename}"></td>
+        <td th:text="${file.eduid}"></td>
+        <td th:text="${file.filepath}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- /container -->
+</body>
+</html>

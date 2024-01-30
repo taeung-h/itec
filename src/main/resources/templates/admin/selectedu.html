@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<style>
+    .alert{
+    color: red;
+    }
+
+       body {
+    font-size:20pt
+    }
+
+    th, td{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+    }
+
+    </style>
+
+<body>
+<div class="container">
+    <div>
+        <form th:action="@{/ongoingedu/select(name=${adminNow.name})}" method="post" th:object="${educheckbox}">
+        <table>
+            <thead>
+            <tr>
+                <th>교육일자</th>
+                <th>교육명</th>
+                <th>교육오픈</th>
+                <th>교육종료</th>
+            </thead>
+            <tbody>
+
+                    <tr th:each="edu : ${edulist}" >
+                        <td th:text="${edu.year}+년 + ${edu.month}+월"></td>
+                        <td th:text="${edu.title}"></td>
+
+                        <td th:if="${edu.state == 'new' or edu.state == 'end'}" >
+                            <input type="checkbox" th:field="*{openedEduList}" th:value="${edu.id}" />
+                        </td>
+                        <td th:unless="${edu.state == 'new' or edu.state == 'end'}" >오픈중</td>
+
+                        <td th:if="${edu.state == 'open'}">
+                            <input type="checkbox" th:field="*{closeEduList}" th:value="${edu.id}" />
+                        </td>
+                        <td th:unless="${edu.state == 'open'}">종료교육</td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+
+            <button type="submit"
+                    style="height:40px;font-size:25px;">확인</button>
+            <label class="alert" th:text="${alert}"></label>
+
+        </form>
+        <a th:href = "@{/ongoingedu/cancel(name=${adminNow.name})}"> <button
+                style="height:40px;font-size:25px;">취소</button></a>
+    </div>
+</div> <!-- /container -->
+</body>
+</html>

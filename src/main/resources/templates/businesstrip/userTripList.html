@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foundation | Welcome</title>
+  <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+</head>
+
+<style>
+
+      .tablenew{
+      }
+      .trtd_new_date{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+      width:90px;
+    }
+    .trtd_new_name{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+      width:300px;
+    }
+      th, td{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+    }
+          .rightText{
+      }
+
+      text-align: right;
+
+    }
+
+</style>
+
+
+<body>
+
+<div class="off-canvas-wrapper">
+  <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+    <div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left">
+      <div class="row column">
+        <br>
+        <h5 th:text ="${member.name}+님"></h5>
+
+      </div>
+    </div>
+
+    <div class="off-canvas-content" data-off-canvas-content>
+      <div class="title-bar hide-for-large">
+      </div>
+      <div class="callout primary">
+        <div class="row column">
+          <h1>정산 리스트
+            <a href="/"style="float: right;" class="button small hollow" >로그아웃</a>
+
+          </h1>
+
+          <p class="lead">정산을 위한 페이지 입니다.
+          </p>
+          <a href="#" style="color: #fff; border-radius:0.2em; float: right" class="button">새정산 만들기</a>
+        </div>
+      </div>
+      <div>
+
+        <table class="tablenew">
+          <thead class="tablenew">
+          <tr class="tablenew">
+            <th class="trtd_new_date">교육년도</th>
+            <th class="trtd_new_date">교육 월</th>
+            <th class="trtd_new_name">교육명</th>
+          </thead>
+          <tbody class="tablenew">
+          <tr class="tablenew" th:each="edu : ${list}" >
+            <td class="trtd_new_date" th:text="${edu.year}+년"></td>
+            <td class="trtd_new_date" th:text="${edu.month}+월"></td>
+            <td class="trtd_new_name">
+              <a  th:text="${edu.title}" th:href="@{/education/monthedulist(eduid=${edu.id}, id=${member.id},
+                 name = ${member.name}, phonenum = ${member.phonenum})}"></a>
+              <label class="result" th:text="${result}"></label>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

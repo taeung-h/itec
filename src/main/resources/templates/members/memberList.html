@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<style>
+
+   body {
+    font-size:20pt
+}
+
+    th, td{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+    }
+
+</style>
+
+<body>
+<div class="container">
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>이름</th>
+                <th>번호</th>
+            </thead>
+            <tbody>
+            <tr th:each="member : ${members}">
+                <td th:text="${member.id}"></td>
+                <td th:text="${member.name}"></td>
+                <td th:text="${member.phonenum}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a th:href = "@{/members/cancel(name=${adminNow.name})}"> <button
+                style="height:40px;font-size:25px;">취소</button></a>
+    </div>
+</div> <!-- /container -->
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foundation | Welcome</title>
+  <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+</head>
+<body>
+
+<!-- Start Top Bar -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li class="menu-text">아이테크놀로지(주) 전자교육 홈페이지</li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li th:text=" ${member.name}+님"></li>
+      <a href="/"><button class="button small hollow">로그아웃</button></a>
+    </ul>
+  </div>
+</div>
+<!-- End Top Bar -->
+
+<div class="callout large">
+  <div class="row column text-center">
+    <h1>전자 교육 시스템</h1>
+    <p class="lead">아이테크놀로지(주) 전자교육 시스템 v1.0</p>
+    <a th:href="@{/education/list(name=${member.name},id=${member.id},phonenum=${member.phonenum})}"
+       class="button large">교육수강</a>
+<!--    <a href="/generatePdf"-->
+    <a class="button large hollow">임시</a>
+  </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>게시물 리스트 페이지</title>-->
+
+
+<!--</head>-->
+
+<!--<style>-->
+<!--    .alert{-->
+<!--    color: blue;-->
+<!--    }-->
+
+<!--      .layout{-->
+<!--        width : 500px;-->
+<!--        margin : 0 auto;-->
+<!--        margin-top : 40px;-->
+<!--    }-->
+
+<!--    .layout input{-->
+<!--        width : 90%;-->
+<!--        box-sizing : border-box;-->
+<!--    }-->
+
+<!--    .layout textarea{-->
+<!--        width : 100%;-->
+<!--        margin-top : 10px;-->
+<!--        min-height : 400px;-->
+<!--    }-->
+
+
+<!--   body {-->
+<!--    font-size:20pt-->
+<!--}-->
+
+<!--</style>-->
+<!--<body>-->
+
+
+<!--<div class="layout">-->
+<!--  <h1>아이테크놀로지(주) 공지사항</h1>-->
+<!--  <p th:text=" ${member.name}+님"></p>-->
+<!--  <p>회원 기능</p>-->
+<!--  <a th:href="@{/education/list(name=${member.name}, id=${member.id},  phonenum = ${member.phonenum})}">교육 리스트</a>-->
+<!--  <p>-->
+<!--    &lt;!&ndash;EduController.edulist 함수 &ndash;&gt;-->
+<!--    <a href="/"><button style="height:40px;font-size:25px;">로그아웃</button></a>-->
+<!--  </p>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->

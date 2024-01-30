@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>게시물 리스트 페이지</title>
+</head>
+
+<style>
+    .alert{
+    color: red;
+    }
+
+      .layout{
+        width : 500px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+
+    .layout input{
+        width : 10%;
+        box-sizing : border-box;
+    }
+
+    .layout textarea{
+        width : 100%;
+        margin-top : 10px;
+        min-height : 400px;
+    }
+
+
+    .layout2{
+        width : 500px;
+        margin : 0 auto;
+    }
+
+    .layout2 input{
+      width : 100%;
+    }
+
+       body {
+    font-size:20pt
+    }
+
+    th, td{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+    }
+
+</style>
+<body>
+<div class="layout">
+
+  <h1 th:text="${education.title}"></h1>
+  <h2 th:text="${education.year}+년+${education.month}+월" ></h2>
+
+
+  <!--@{/education/modify(id=${education.id})}-->
+  <form id="geteducation" th:action="@{/education/modify(id=${education.id},name=${adminNow.name})}" method="post" object="geteducation" enctype="multipart/form-data">
+    <div class="form-group">
+
+      <div class="layout2">
+        <input name="title" id="title" type="text" th:value = "${education.title}"
+               style="font-size:20px;">
+      </div>
+
+      <textarea name="content" id="content" th:text="${education.content}"
+                style="font-size:20px;"></textarea>
+
+      <tr th:each="file : ${filelist}" >
+        <img th:src="@{${file.filepath}}" th:if="${file.filepath != null}" width="500"/>
+      </tr>
+
+      <div class="layout2">
+        <label for="getfiles">추가파일첨부</label>
+        <div>
+          <input type="file" id="getfiles" name="getfiles" multiple="multiple" accept="image/*"
+                 style="height:40px;font-size:25px;">
+        </div>
+      </div>
+      <button type="submit" style="width:100px;height:40px;font-size:25px;">저장</button>
+    </div>
+  </form>
+  <a th:href="@{/educations(name=${adminNow.name})}"><button
+          style="height:40px;font-size:25px;">뒤로가기</button></a>
+  <a th:href="@{/edufiles(id=${education.id},name=${adminNow.name})}"><button
+          style="height:40px;font-size:25px;">첨부파일목록</button></a>
+  <a th:href = "@{/education/delete(id=${education.id},name=${adminNow.name})}"> <button
+          style="height:40px;font-size:25px;">삭제</button></a>
+
+  <div></div>
+  <label class="alert" th:text="${deleteAlert}"></label>
+
+</div>
+
+
+
+
+</body>
+</html>

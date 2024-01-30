@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+
+<style>
+    .alert{
+    color: red;
+    }
+
+
+   body {
+    font-size:20pt
+}
+
+</style>
+
+<div class="container">
+  <form action="/members/adminonly" method="post">
+    <div class="form-group">
+      <label for="name">이름</label>
+      <input type="text" id="name" name="name"
+             style="height:40px;font-size:20px;" placeholder="이름을입력하세요" required>
+    </div>
+    <div class="form-group">
+      <label for="password">비밀번호 입력</label>
+      <input type="password" id="password" name="password"
+             style="height:40px;font-size:20px;" placeholder="비밀번호 입력" required>
+    </div>
+    <div>
+      <button type="submit" style="height:40px;font-size:25px;">등록</button>
+    </div>
+  </form>
+</div>
+
+</div> <!-- /container -->
+</body>
+</html>

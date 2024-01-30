@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+
+<!-- <body style="text-align: center"> -->
+출장지를 등록하는 페이지 입니다.
+
+<style>
+    .alert{
+    color: red;
+    }
+
+    .layout{
+        width : 1000px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+
+    .layout input{
+        width : 90%;
+        box-sizing : border-box;
+    }
+
+    .layout textarea{
+        width : 100%;
+        margin-top : 10px;
+        min-height : 400px;
+    }
+
+    .layout2{
+        width : 800px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+
+    .layout2 input{
+      width : 30%;
+      box-sizing : border-box;
+    }
+       body {
+    font-size:20pt
+}
+
+
+</style>
+
+<body>
+
+
+<div class="layout">
+    <form id="location" th:action="@{/location/modify(locationid=${data.id})}" object="location" method="post">
+        <div class="form-group">
+            <div class="layout2">
+
+                <div>
+                    <label for="company">업체명 ex) 삼성, 하닉 </label>
+                    <input type="text" id="company" name="company"
+                           style="height:40px;font-size:20px;"
+                           th:value = "${data.company}" placeholder="회사명을 입력하세요" required>
+                </div>
+
+
+                <div>
+                    <label for="name">출장지명</label>
+                    <input type="text" id="name" name="name"
+                           style="height:40px;font-size:20px;" th:value = "${data.name}" placeholder="출장지명을 입력하세요" required>
+                    <label class="alert" th:text="${joinalert}"></label>
+                </div>
+
+                <div>
+                    <label for="distance">거리(km) ex) 14.5km -> 14.5) </label>
+                    <input type="text" id="distance" name="distance"
+                           style="height:40px;font-size:20px;" th:value = "${data.distance}" placeholder="거리를 입력하세요" required>
+                </div>
+            </div>
+        </div>
+        <button type="submit"
+                style="height:40px;font-size:25px;">등록</button>
+    </form>
+    <a href="/location/cancel"><button
+            style="height:40px;font-size:25px;">등록취소</button></a>
+</div>
+</body>
+</html>

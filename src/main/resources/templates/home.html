@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>아이테크 전자교육페이지 | Welcome</title>
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+</head>
+<body>
+
+<style>
+    .alert{
+    color: red;
+    }
+</style>
+
+<div class="top-bar">
+    <div class="row">
+        <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <li class="menu-text">아이테크놀로지(주) 전자교육전파 홈페이지</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Top Bar -->
+<br>
+<!-- You can now combine a row and column if you just need a 12 column row -->
+<div class="row columns">
+    <nav aria-label="You are here:" role="navigation">
+        <ul class="breadcrumbs">
+            <li class="disabled">Home</a></li>
+            <li class="disabled">추후업데이트</li>
+        </ul>
+    </nav>
+</div>
+
+<div class="row">
+    <div class="medium-6 columns">
+        <img class="thumbnail" src="/itec/images/main.png">
+    </div>
+    <div class="medium-6 large-5 columns">
+        <h3>계정 입력</h3>
+        <p>안전 규정 공유 및 사내 공지를 위한 시스템입니다. 로그인 후 이용 바랍니다.</p>
+        <form name="member" action="/home/login" method="post">
+            <label for="name">이름
+                <div class="small-9 columns">
+                    <input type="text" id="name" name="name"  placeholder="이름을 입력하세요." required>
+                </div>
+            </label>
+            <label class="alert" th:text="${namealert}"></label>
+
+            <div class="row">
+                <div class="small-3 columns">
+                    <label for="phonenum" class="middle">전화번호</label>
+                </div>
+                <div class="small-9 columns">
+                    <input type="text" id="phonenum" name="phonenum" placeholder="010제외 8자리를 입력하세요." required>
+                </div>
+                <label class="alert" th:text="${phonenumalert}"></label>
+            </div>
+
+            <button type="submit" class="button large expanded">로그인</button>
+        </form>
+        <div class="small secondary expanded button-group">
+            <a href="/adminlogin" class="button">관리자 로그인</a>
+            <a class="button">추후 업데이트</a>
+            <a class="button">추후 업데이트</a>
+        </div>
+    </div>
+</div>
+
+<div class="column row">
+    <hr>
+    <ul class="tabs" data-tabs id="example-tabs">
+        <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Reviews</a></li>
+        <li class="tabs-title"><a href="#panel2">Similar Products</a></li>
+    </ul>
+    <div class="tabs-content" data-tabs-content="example-tabs">
+        <div class="tabs-panel is-active" id="panel1">
+            <h4>기능 Reviews</h4>
+            <div class="media-object stack-for-small">
+                <div class="media-object-section">
+                    <img class="thumbnail" src="/itec/images/reviewlog1.png">
+                </div>
+                <div class="media-object-section">
+                    <h5>공지 전파 및 서명</h5>
+                    <p>사내공지/교육 및 전자결재 기능</p>
+                </div>
+            </div>
+            <div class="media-object stack-for-small">
+                <div class="media-object-section">
+                    <img class="thumbnail" src="/itec/images/reviewlog2.png">
+                </div>
+                <div class="media-object-section">
+                    <h5>출장 품의 작성</h5>
+                    <p>추후 개발 예정, 출장 품의 작성/결재/제출 시스템</p>
+                </div>
+            </div>
+        </div>
+        <div class="tabs-panel" id="panel2">
+            <div class="row medium-up-3 large-up-5">
+                <div class="media-object-section">
+                    <h5>추후 업데이트예정</h5>
+                    <p>필요 기능 식별시 업데이트 예정</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row column">
+    <hr>
+    <ul class="menu">
+        <li>아이테크놀로지(주)</li>
+        <li class="float-right">Contact : htu@iteckorea.kr</li>
+    </ul>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+<!--<!DOCTYPE HTML>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<body>-->
+
+<!--<style>-->
+<!--    .alert{-->
+<!--    color: red;-->
+<!--    }-->
+
+<!--      .layout{-->
+<!--        width : 500px;-->
+<!--        margin : 0 auto;-->
+<!--        margin-top : 40px;-->
+<!--    }-->
+
+<!--    .layout input{-->
+<!--        width : 90%;-->
+<!--        box-sizing : border-box;-->
+<!--    }-->
+
+<!--    .layout textarea{-->
+<!--        width : 100%;-->
+<!--        margin-top : 10px;-->
+<!--        min-height : 400px;-->
+<!--    }-->
+
+<!--        .layout2{-->
+<!--        width : 500px;-->
+<!--        margin : 0 auto;-->
+<!--        margin-top : 40px;-->
+<!--    }-->
+
+<!--    .layout2 input{-->
+<!--      width : 30%;-->
+<!--      box-sizing : border-box;-->
+<!--    }-->
+
+<!--   body {-->
+<!--    font-size:20pt-->
+<!--}-->
+
+
+<!--</style>-->
+
+<!--<div class="layout">-->
+<!--    <div>-->
+<!--        <h1>아이테크 교육전파</h1>-->
+<!--        &lt;!&ndash; homecontroller.login 함수&ndash;&gt;-->
+<!--        <form name="member" action="/home/login" method="post">-->
+<!--            <div class="layout2">-->
+<!--                <label for="name">이름</label>-->
+<!--                <input type="text" id="name" name="name" style="width:220px;height:40px;font-size:15px;"-->
+<!--                       placeholder="이름을 입력하세요" required >-->
+<!--                <div></div>-->
+<!--                <label class="alert" th:text="${namealert}"></label>-->
+<!--                <label for="phonenum">전화번호</label>-->
+<!--                <input type="text" id="phonenum" name="phonenum" style="width:220px;height:40px;font-size:15px;"-->
+<!--                       placeholder="전화번호 뒤 4자리 입력하세요" required>-->
+<!--                <label class="alert" th:text="${phonenumalert}"></label>-->
+<!--            </div>-->
+<!--            <button type="submit" style="height:40px;font-size:25px;">선택</button>-->
+<!--        </form>-->
+<!--        <div></div>-->
+<!--        <div></div>-->
+<!--        <p>관리자</p>-->
+<!--        <a href="/adminlogin" ><button style="height:40px;font-size:25px;">관리자로그인</button></a>-->
+<!--        </p>-->
+<!--    </div>-->
+<!--</div> &lt;!&ndash; /container &ndash;&gt;-->
+<!--</body>-->
+<!--</html>-->

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation | Welcome</title>
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <script language="JavaScript">
+
+    ///////////////////////////////////////////////////////////////////////////// 개인운행
+    var oTbl;
+    function insRow(tablename) {
+    oTbl = document.getElementById(tablename);
+      var oRow = oTbl.insertRow();
+      oRow.onmouseover=function(){oTbl.clickedRowIndex=this.rowIndex}; //clickedRowIndex - 클릭한 Row의 위치를 확인;
+
+      var oCell = oRow.insertCell();
+      //삽입될 Form Tag
+      var frmTag = "<label for=addText>운행구분<select id='category' name='category'  style=width:100.0%; height:20px><option value='indivision' selected='selected'>개인</option><option value='corporation'>법인</option><option value='pulic'>대중</option></select></label>";
+      oCell.innerHTML = frmTag;
+      oCell.width="12%";
+
+    oCell = oRow.insertCell();
+      //삽입될 Form Tag
+      var frmTag = "<label for=addText>일자<input type=date id='subdate' name='subdate' style=width:100.0%; height:20px></label>";
+      oCell.innerHTML = frmTag;
+      oCell.width="10%";
+
+      oCell = oRow.insertCell();
+      //삽입될 Form Tag
+      var frmTag = "<label for=addText>유류<select id='type' name='type' style=width:100.0%; height:20px><option value='gasoline' selected='selected'>휘발유</option><option value='diesel'>경유</option><option value='hybrid'>하이브</option><option value='elec'>전기</option></select></label>";
+      oCell.innerHTML = frmTag;
+      oCell.width="15%";
+
+          oCell = oRow.insertCell();
+      //삽입될 Form Tag
+      var frmTag = "<label for=addText>출장회사<select id='company' name='company'  style=width:100.0%; height:20px><option value='samsung' selected='selected'>삼성</option><option value='hynix'>하닉</option><option value='etc'>기타</option></select></label>";
+      oCell.innerHTML = frmTag;
+      oCell.width="12%";
+
+    oCell = oRow.insertCell();
+      //삽입될 Form Tag
+      var frmTag = "<label for=addText>목적(코드)<input type=text id='code' name='code' style=width:100.0%; height:20px></label>";
+      oCell.innerHTML = frmTag;
+      oCell.width="15%";
+
+
+      oCell = oRow.insertCell();
+      frmTag = "<div style='float:right';>";
+      frmTag += "<input type=button value='삭제' onClick='removeRow()' style='cursor:hand';>";
+       frmTag +="</div>";
+      oCell.innerHTML = frmTag;
+
+
+      oRow = oTbl.insertRow();
+
+
+
+      oCell = oRow.insertCell();
+      //삽입될 Form Tag
+      var frmTag = "<label for=addText>출발<input type=text id='depart' name='depart' style=width:100.0%; height:20px></label>";
+      oCell.innerHTML = frmTag;
+      oCell.width="10%";
+
+    oCell = oRow.insertCell();
+      //삽입될 Form Tag
+      var frmTag = "<label for=addText>경유<input type=text id='pass' name='pass' style=width:100.0%; height:20px></label>";
+      oCell.innerHTML = frmTag;
+      oCell.width="10%";
+
+    oCell = oRow.insertCell();
+      //삽입될 Form Tag
+      var frmTag = "<label for=addText>도착<input type=text id='desti' name='desti' style=width:100.0%; height:20px></label>";
+      oCell.innerHTML = frmTag;
+      oCell.width="10%";
+
+    oCell = oRow.insertCell();
+      //삽입될 Form Tag
+      var frmTag = "<label for=addText>구분<select id='ways' name='ways'  style=width:100.0%; height:20px><option value='oneway' selected='selected'>편도</option><option value='both'>왕복</option></select></label>";
+      oCell.innerHTML = frmTag;
+      oCell.width="10%";
+
+
+            oCell = oRow.insertCell();
+      //삽입될 Form Tag
+      var frmTag = "<label for=addText>거리<input type=text id='distance' name='distance' style=width:100.0%; height:20px></label>";
+      oCell.innerHTML = frmTag;
+      oCell.width="10%";
+
+                  oCell = oRow.insertCell();
+      //삽입될 Form Tag
+      var frmTag = "<label for=addText>금액(원)<input type=text id='cost' name='cost' style=width:100.0%; height:20px; float:right></label>";
+      oCell.innerHTML = frmTag;
+      oCell.width="15%";
+
+
+
+      //세번째 줄
+      oRow = oTbl.insertRow();
+
+      oCell = oRow.insertCell();
+      var frmTag = "<label for='recipt'>증빙첨부<input type=file id='recipt'' name='recipt' accept='image/*' style=width:250.0%; height:20px; float:right ></label>";
+      oCell.innerHTML = frmTag;
+      oCell.width="15%";
+
+
+
+    }
+
+
+    //Row 삭제
+    function removeRow() {
+      oTbl.deleteRow(oTbl.clickedRowIndex+2);
+      oTbl.deleteRow(oTbl.clickedRowIndex+1);
+      oTbl.deleteRow(oTbl.clickedRowIndex);
+    }
+
+
+
+    ///////////////////////////////////////////////////////////////////////////// 먼지 모름
+    function frmCheck()
+    {
+      var frm = document.form;
+
+      for( var i = 0; i <= frm.elements.length - 1; i++ ){
+         if( frm.elements[i].name == "addText" )
+         {
+             if( !frm.elements[i].value ){
+                 alert("텍스트박스에 값을 입력하세요!");
+                     frm.elements[i].focus();
+         return;
+              }
+          }
+       }
+     }
+    </script>
+</head>
+
+<style>
+  .alert{
+color: red;
+}
+</style>
+
+<body>
+
+<!-- Start Top Bar -->
+<div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu">
+            <li class="menu-text">아이테크놀로지(주) 전자교육전파 홈페이지</li>
+        </ul>
+    </div>
+    <div class="top-bar-right">
+        <ul class="menu">
+            <li th:text=" ${member.name}+님">
+            </li>
+            <a href="/"style="float: right;" class="button small hollow" >로그아웃</a>
+        </ul>
+    </div>
+</div>
+<!-- End Top Bar -->
+
+<div class="callout large primary">
+    <div class="row column text-center">
+        <h1 th:text="${education.title}"></h1>
+        <h2 class="subheader" th:text="${education.year}+년+${education.month}+월"></h2>
+        <h1 class="alert" th:text="${alert}"></h1>
+    </div>
+</div>
+
+
+
+
+
+<!-- We can now combine rows and columns when there's only one column in that row -->
+<div class="row medium-8 large-7 columns">
+    <div class="blog-post">
+        <h3>정산서</h3>
+        <div class="callout">
+            <ul class="menu simple">
+                <label for="month">정산 월(월)</label>
+                <input type="text" id="month" name="month"
+                       style="height:40px;font-size:20px;" placeholder="정산하려는 월을 입력하세요(ex)11월 -> 11만 입력" required>
+            </ul>
+        </div>
+        <div class="callout">
+            <ul class="menu simple">
+                <form name="form" method="post">
+
+                    <!--개인차량 테이블 -->
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td colspan="2" align="left" bgcolor="#FFFFFF">
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td colspan="5" bgcolor="#FFFFFF" height="25" align="left">
+                                            <h3>교통비</h3>
+                                            <input name="addButton" type="button" style="cursor:hand" onClick="insRow(0)" value="항목추가">
+                                            <font color="#FF0000">*</font>추가버튼을 클릭해 보세요.</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td height="25" calign="center" bgcolor="#FFFFFF">
+                                            <table id="0" width="100%" padding="10%" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" border="0">
+                                            </table></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!--하이패스 테이블 -->
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td colspan="2" align="left" bgcolor="#FFFFFF">
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td colspan="5" bgcolor="#FFFFFF" height="25" align="left">
+                                            <h3>도로사용료(하이패스)</h3>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" bgcolor="#FFFFFF" height="25" align="right">
+                                            <label>원</label>
+                                        </td>
+                                        <td colspan="5" bgcolor="#FFFFFF" height="25" align="left">
+                                            <input width="30%" name="hipasscost" type="text"
+                                                   placeholder="ex) 3,400원 -> 3400만 입력">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" bgcolor="#FFFFFF" height="25" align="right">
+                                            <label for="hipassrecipt">첨부파일</label>
+
+                                        </td>
+                                        <td colspan="5" bgcolor="#FFFFFF" height="25" align="left" width="40%">
+                                            <input type="file" id="hipassrecipt" name="hipassrecipt"
+                                                   style="font-size:18px;" multiple="multiple" accept="image/*">
+                                            <label class="alert" th:text="${hipassealert}"></label>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td align="right">
+                                <button type="submit"
+                                        style="color: #fff; background:gray; font-size:18px; border-radius:0.2em; padding:5px 20px;"
+                                >다음</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </ul>
+        </div>
+        <a th:href = "@{/education/list(id=${member.id}, name=${member.name}
+  ,phonenum = ${member.phonenum})}"> <button
+                style="height:40px;font-size:25px;margin-left:50px">취소</button></a>
+    </div>
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+<!--<head>-->
+<!--  <title>게시물 리스트 페이지</title>-->
+<!--</head>-->
+
+<!--<style>-->
+<!--.alert{
+color: red;
+}-->
+<!--      .layout{-->
+<!--      width : 500px;-->
+<!--        margin : 0 auto;-->
+<!--        margin-top : 40px;-->
+<!--    }-->
+
+<!--    .layout input{-->
+<!--        width : 90%;-->
+<!--        box-sizing : border-box;-->
+<!--    }-->
+
+<!--    .layout textarea{-->
+<!--        width : 100%;-->
+<!--        margin-top : 10px;-->
+<!--        min-height : 400px;-->
+<!--    }-->
+<!--       body {-->
+<!--    font-size:20pt-->
+<!--    }-->
+
+
+<!--</style>-->
+<!--<body>-->
+<!--<div class="layout">-->
+
+<!--  <h1 class="alert" th:text="${alert}"></h1>-->
+<!--  <h1 th:text="${education.title}"></h1>-->
+<!--  <h2 th:text="${education.year}+년+${education.month}+월" ></h2>-->
+<!--  <pre th:text="${education.content}"></pre>-->
+
+<!--  <tr th:each="file : ${filelist}" >-->
+<!--    <img th:src="@{${file.filepath}}" th:if="${file.filepath != null}" width="500"/>-->
+<!--  </tr>-->
+
+<!-- Completecontroller.educationsign함수-->
+<!--  <a th:href = "@{/complete/sign(eduid=${education.id},id=${member.id}, name=${member.name}-->
+<!--  ,phonenum = ${member.phonenum})}"> <button-->
+<!--          style="height:40px;font-size:25px;">교육완료</button></a>-->
+<!--  <a th:href = "@{/education/list(id=${member.id}, name=${member.name}-->
+<!--  ,phonenum = ${member.phonenum})}"> <button-->
+<!--          style="height:40px;font-size:25px;">취소</button></a>-->
+
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->

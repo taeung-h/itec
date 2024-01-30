@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<style>
+     body {
+    font-size:20pt
+}
+
+      .tablenew{
+      }
+      .trtd_new_value{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+      width:200px;
+    }
+    .trtd_new_name{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+      width:100;
+    }
+      th, td{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+    }
+          .rightText{
+      }
+
+      text-align: right;
+
+    }
+</style>
+
+<body>
+
+<div class="container">
+  <div>
+    <h1>유류관련 데이터 편집창</h1>
+    <p th:text="안녕하세요"></p>
+
+
+    <p>데이터</p>
+
+    <table class="tablenew">
+      <thead class="tablenew">
+      <tr class="tablenew">
+        <th class="trtd_new_name">유류명</th>
+        <th class="trtd_new_value">연비</th>
+        <th class="trtd_new_value">단가</th>
+        <th class="trtd_new_value">개인차량보수비</th>
+      </tr>
+      </thead>
+      <tbody class="tablenew">
+      <tr class="tablenew" th:each="oil : ${list}" >
+          <td class="trtd_new_value" th:text="${oil.name}"></td>
+          <td class="trtd_new_value"th:text="${oil.perliter}"></td>
+          <td class="trtd_new_value" th:text="${oil.price}"></td>
+          <td class="trtd_new_value" th:text="${oil.repaircost}"></td>
+          <td class="trtd_new_value"> <a th:href="@{/oils/modify(oilid=${oil.id})}">수정</a> </td>
+        </tr>
+      </tbody>
+  </table>
+
+    <a href="/oils/cancel"><button
+            style="height:40px;font-size:25px;">뒤로가기</button></a>
+
+
+
+
+
+
+  </div>
+</div> <!-- /container -->
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>게시물 리스트 페이지</title>
+</head>
+
+<style>
+    .result{
+    color: blue;
+    }
+        .alert{
+    color: red;
+    }
+      .layout{
+        width : 500px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+
+    .layout input{
+        width : 90%;
+        box-sizing : border-box;
+    }
+
+    .layout textarea{
+        width : 100%;
+        margin-top : 10px;
+        min-height : 400px;
+    }
+          .layout4{
+        margin-left : 40px;
+    }
+       body {
+    font-size:20pt
+}
+
+    th, td{
+      margin : 10px;
+      padding : 10px 10px;
+      text-align: center;
+    }
+
+</style>
+<body>
+<h1>종료된 교육만 리스트로 나옵니다.!!</h1>
+<p th:text = "서명자_+${adminNow.name}"></p>
+
+
+<a th:href="@{/members/cancel(name=${adminNow.name})}"><button
+        style="height:40px;font-size:25px;">뒤로가기</button></a>
+<div class="layout">
+
+  <table>
+    <thead>
+    <tr>
+      <th>교육년도</th>
+      <th style="margin-left : 10px;">교육 월</th>
+      <th style="margin-left : 10px;">교육명</th>
+    </thead>
+    <tbody>
+    <tr th:each="edu : ${list}" >
+      <td th:text="${edu.year}+년"></td>
+      <td th:text="${edu.month}+월"></td>
+      <td>
+        <!-- educontroller.monthedu 함수-->
+        <a th:text="${edu.title}" th:href="@{/complete/signpaper(eduid=${edu.id},name=${adminNow.name})}"></a>
+<!--        <a th:href="@{/complete/signpaperpdf(eduid=${edu.id})}"><button-->
+<!--                style="height:40px;font-size:25px;">엑셀출력</button></a>-->
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+
+</body>
+</html>

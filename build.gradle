@@ -1,0 +1,97 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.2'
+	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+	id 'java'
+}
+
+group = 'notice'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+
+repositories {
+	mavenCentral()
+
+	//maven쓸때
+	maven{
+		url'https://artifact.aspose.com/repo/'
+	}
+}
+/*
+
+tasks.named('jar'){
+	mainfest{
+		attributes 'Main-Class": "notice.noticespring.NoticeSpringApplication'
+	}
+	from{
+		configurations.runtimeClasspath.collect {
+			it.isDirectory() ? it : zipTree(it)
+		}
+	}
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+ */
+
+
+
+dependencies {
+	implementation 'mysql:mysql-connector-java'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation("org.xhtmlrenderer:flying-saucer-pdf:9.1.20")
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.projectlombok:lombok:1.18.22'
+    implementation 'org.jetbrains:annotations:20.1.0'
+
+	//static 추가하는 법???
+	//compile 'org.springframework.boot:spring-boot-devtools'
+
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+	//H2database 사용 경우
+	//runtimeOnly 'com.h2database:h2'
+	/**
+	 resources/application.properties에 추가해야할 내용
+
+	 spring.datasource.url=jdbc:h2:tcp://localhost/~/test
+	 spring.datasource.driver-class-name=org.h2.Driver
+	 spring.datasource.username=sa
+
+	 spring.jpa.show-sql=true
+	 spring.jpa.hibernate.dll-auto=none
+	 *
+	 *
+	 *
+	 */
+
+
+	//마리나DB 사용 경우
+
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:2.7.4'
+
+	//maven
+	//compile group: 'com.aspose', name: 'aspose-words', version: '18.9', classfier: 'jdk16'
+	//compile(group: 'com.aspose', name: 'aspose-cells', version: '22.8')
+
+
+
+	///PDF 변환을 위해서 추가
+	///즐겨찾기 thymeleaf사용 1 내용 참고
+	// build.gradle.kts
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.xhtmlrenderer:flying-saucer-pdf:9.1.22'
+	implementation 'com.itextpdf:kernel:7.1.16'
+	implementation 'com.itextpdf:layout:7.1.16'
+	implementation 'com.itextpdf:io:7.1.16'
+	implementation 'com.itextpdf:html2pdf:4.0.3'
+
+
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
