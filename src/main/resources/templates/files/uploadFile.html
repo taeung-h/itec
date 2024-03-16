@@ -54,12 +54,23 @@
     <form id="education" th:object="${education}" th:action="@{/files/new(name=${adminNow.name})}" method="post" enctype="multipart/form-data">
       <div class="form-group">
         <div class="layout2">
-          <label for="year">교육년도</label>
-          <input type="text" id="year" name="year"
-                 style="height:40px;font-size:20px;" placeholder="교육 년도를 입력하세요" required>
-          <label for="month">교육월</label>
-          <input type="text" id="month" name="month"
-                 style="height:40px;font-size:20px;" placeholder="교육 월을 입력하세요" required>
+          <div>
+            <label for="year" style="font-size:15px;">교육년도</label>
+            <input type="text" id="year" name="year"
+                   style="height:40px;font-size:12px;" placeholder="년도 입력" required>
+          </div>
+          <div>
+            <label for="year" style="font-size:15px;">교육일자</label>
+            <input type="text" id="month" name="month"
+                   style="height:40px;font-size:12px;" placeholder="월 입력" required>
+            <input type="text" id="day" name="day"
+                   style="height:40px;font-size:12px;" placeholder="일 입력" required>
+          </div>
+          <div>
+            <label for="year" style="font-size:15px;">교육장소</label>
+            <input type="text" id="location" name="location"
+                   style="height:40px;font-size:20px;" placeholder="교육 장소 입력" required>
+          </div>
         </div>
         <div>
           <label for="title">제목</label>

@@ -23,6 +23,35 @@ public class Education {
     @Column(length = 7)
     private String month;
 
+
+    ///3월 16일 업데이트
+    ///교육에 날짜, 장소 입력 기능 추가
+    @Column(length = 7)
+    private String day;
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    @Column(length = 50)
+    private String location;
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    ///end 3/16
+
+
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -87,5 +116,6 @@ public class Education {
     public void setFilepath(String filepath) {
         this.filepath = filepath;
     }
+
 
 }
