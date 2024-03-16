@@ -124,14 +124,15 @@ public class CompleteController {
         model.addAttribute("nomembernumber", "-");
         model.addAttribute("nomembernumberreason", "-");
 
-        if(!members.isEmpty())
-        {
-            pdfService.generateSignPdf(education, members,instructor, outputFilePath);
-
-            File file = new File(outputFilePath);
-            HttpHeaders headers = new HttpHeaders();
-            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=output.pdf");
-        }
+        ///파일 출력하려고 했던 흔적
+//        if(!members.isEmpty())
+//        {
+//            pdfService.generateSignPdf(education, members,instructor, outputFilePath);
+//
+//            File file = new File(outputFilePath);
+//            HttpHeaders headers = new HttpHeaders();
+//            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=output.pdf");
+//        }
 
 
         return "complete/printexcel";
