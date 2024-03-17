@@ -52,7 +52,8 @@
 <div class="layout">
 
   <h1 th:text="${education.title}"></h1>
-  <h2 th:text="${education.year}+년+${education.month}+월" ></h2>
+  <h2 th:text="${education.year}+년+${education.month}+월+ ${education.day}+일" ></h2>
+  <h2 th:text="${education.location}" ></h2>
 
 
   <!--@{/education/modify(id=${education.id})}-->

@@ -35,7 +35,7 @@ color: red;
 <div class="callout large primary">
   <div class="row column text-center">
     <h1 th:text="${education.title}"></h1>
-    <h2 class="subheader" th:text="${education.year}+년+${education.month}+월"></h2>
+    <h2 class="subheader" th:text="${education.year}+년+${education.month}+월 + ${education.day}+일"></h2>
     <h1 class="alert" th:text="${alert}"></h1>
   </div>
 </div>
