@@ -120,6 +120,12 @@ public class CompleteController {
         model.addAttribute("instructor", instructor.getName());
         model.addAttribute("instructorSignPath", instructor.getSignpath());
 
+
+        Member ceo = memberService.findByposition("C");
+        //model.addAttribute("CEO", instructor.getName());
+        model.addAttribute("CEOSignPath", ceo.getSignpath());
+
+
         //미참석인원수와 미참석사유내용
         model.addAttribute("nomembernumber", "-");
         model.addAttribute("nomembernumberreason", "-");
