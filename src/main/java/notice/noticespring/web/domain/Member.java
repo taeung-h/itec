@@ -22,6 +22,17 @@ public class Member {
 
     @Column(length = 127)
     private String position;
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    
+
+
 
     @Column
     private Long superiorid;
@@ -63,11 +74,4 @@ public class Member {
         this.superiorid = superiorid;
     }
 
-    public String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
 }
