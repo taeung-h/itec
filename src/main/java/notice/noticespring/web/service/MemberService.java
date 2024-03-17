@@ -69,6 +69,10 @@ public class MemberService {
     public Member findByname(String name){
         return springDataJpaMemberRepository.findByname(name).get();
     }
+
+    public Member findByposition(String position){
+        return springDataJpaMemberRepository.findByposition(position).get();
+    }
     public Boolean matchingName(Member member)
     {
         Boolean temp = false;

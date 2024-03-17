@@ -33,6 +33,12 @@ public class JPAMemberRepository implements MemberRepository{
         return result.stream().findAny();
     }
 
+
+    public Optional<Member> findByposition(String position) {
+        List<Member> result = em.createQuery("select m from Member m where m.position = :position", Member.class).setParameter("position", position).getResultList();
+        return result.stream().findAny();
+    }
+
     @Override
     public Optional<Member> findByphonenum(int phonenum) {
         List<Member> result = em.createQuery("select m from Member m where m.phonenum = :phonenum", Member.class).setParameter("phonenum", phonenum).getResultList();

@@ -20,6 +20,9 @@ public class Member {
     @Column(length = 127)
     private String signpath;
 
+    @Column(length = 127)
+    private String position;
+
     @Column
     private Long superiorid;
 
@@ -58,5 +61,13 @@ public class Member {
 
     public void setSuperiorid(Long superiorid) {
         this.superiorid = superiorid;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 }
